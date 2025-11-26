@@ -2,7 +2,9 @@ import pandas as pd
 import numpy as np
 import os
 
-#Tasa_interes = 
+Tasa_interes = pedir_info()
+Monto_prestamo = pedir_info()
+Plazo_meses = pedir_info()
 
 #def main
 
@@ -17,5 +19,8 @@ def pedir_info():
     Plazo_meses = int(input("Por favor ingresa el plazo del préstamo en meses": "))
     print("\nCalculando el plan de amortización...\n") 
     
+    return Tasa_interes, Monto_prestamo, Plazo_meses
+
+
 
 pedir_info()
