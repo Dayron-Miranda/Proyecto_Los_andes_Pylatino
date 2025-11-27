@@ -6,7 +6,8 @@ Tasa_interes = pedir_info()
 Monto_prestamo = pedir_info()
 Plazo_meses = pedir_info()
 
-#def main
+def main():
+    
 
 
 
