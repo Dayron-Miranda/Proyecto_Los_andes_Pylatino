@@ -1,13 +1,8 @@
 import pandas as pd
 import numpy as np
+import numpy_financial as npf
 import os
 
-Tasa_interes = pedir_info()
-Monto_prestamo = pedir_info()
-Plazo_meses = pedir_info()
-
-def main():
-    
 
 
 
@@ -23,5 +18,8 @@ def pedir_info():
     return Tasa_interes, Monto_prestamo, Plazo_meses
 
 
+def calcular_amortizacion(Tasa_interes, Monto_prestamo, Plazo_meses):
 
-pedir_info()
+
+
+main()
