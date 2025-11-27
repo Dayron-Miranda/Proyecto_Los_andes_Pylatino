@@ -7,18 +7,41 @@ import os
 
 
 def pedir_info():
-    print ("Proyecto de Amortización de Préstamos")
-    print ("-------------------------------------")
-    print ("Acontinuacion tendremos una serie de preguntas las cuales nos ayudaran a calcular tu credito y te dara una perspectiva de tus pagos mensuales")
-    Tasa_interes = float(input("Por favor ingresa la tasa de interes anual (en porcentaje, por ejemplo 12.5): "))
-    Monto_prestamo = float(input("Por favor ingresa el monto del préstamo: "))
-    Plazo_meses = int(input("Por favor ingresa el plazo del préstamo en meses": "))
-    print("\nCalculando el plan de amortización...\n") 
+    print("Proyecto de Amortización de Préstamos")
+    print("-------------------------------------")
+    print("A continuación tendremos una serie de preguntas las cuales nos ayudarán a calcular tu crédito y te dará una perspectiva de tus pagos mensuales\n")
     
-    return Tasa_interes, Monto_prestamo, Plazo_meses
-
+    tasa_interes_anual = float(input("Por favor ingresa la tasa de interés anual (en porcentaje, por ejemplo 12.5): "))
+    monto_prestamo = float(input("Por favor ingresa el monto del préstamo: "))
+    plazo_meses = int(input("Por favor ingresa el plazo del préstamo en meses: "))
+    
+    print("\nCalculando el plan de amortización...\n")
+    
+    return tasa_interes_anual, monto_prestamo, plazo_meses
 
 def calcular_amortizacion(Tasa_interes, Monto_prestamo, Plazo_meses):
+    tasa_Mensual = (1 + Tasa_interes / 100) ** (1/12) - 1
+    pago_mensual = npf.pmt(tasa_Mensual, Plazo_meses, -Monto_prestamo)
+
+
+    tabla = [] 
+    saldo = Monto_prestamo
+
+    for mes in range(1, Plazo_meses + 1):
+        interes = saldo * tasa_Mensual
+        abono_capital = pago_mensual - interes
+        saldo -= abono_capital
+
+        tabla.append({
+            "Mes": mes,
+            "Pago Mensual": round(pago_mensual, 2),
+            "Interés": round(interes, 2),
+            "Abono a Capital": round(abono_capital, 2),
+            "Saldo Restante": round(saldo if saldo > 0 else 0, 2)
+        })
+
+
+
 
 
 
