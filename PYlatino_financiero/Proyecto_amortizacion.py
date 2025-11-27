@@ -41,10 +41,10 @@ def calcular_amortizacion(Tasa_interes, Monto_prestamo, Plazo_meses):
         })
 
     df_amortizacion = pd.DataFrame(tabla)
-    return df_amortizacion, tasa_Mensual
+    return df_amortizacion
 
 
-#def guardar_excel(df, nombre_archivo="Plan_Amortizacion.xlsx"):
+def guardar_excel(df, nombre_archivo="Plan_Amortizacion.xlsx"):
     ruta_actual = os.getcwd()
     ruta_archivo = os.path.join(ruta_actual, nombre_archivo)
     df.to_excel(ruta_archivo, index=False)
@@ -58,7 +58,12 @@ def main():
     df_amortizacion = calcular_amortizacion(tasa_interes_anual, monto_prestamo, plazo_meses)
     print(f"Plan de Amortización para un préstamo de {monto_prestamo} a una tasa anual de {tasa_interes_anual}% y en meses {tasa_Mensual}% a {plazo_meses} meses:\n")
     print(df_amortizacion)
-    #guardar_excel(df_amortizacion)
+    respuesta = input("desea guardar el plan de amortización en un archivo excel? Y/N: ")
+    if respuesta.lower() == 'y':
+        guardar_excel(df_amortizacion) 
+    else:
+        print("No se guardó el archivo.")
+
 
 
 
