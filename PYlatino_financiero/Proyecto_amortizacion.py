@@ -40,9 +40,28 @@ def calcular_amortizacion(Tasa_interes, Monto_prestamo, Plazo_meses):
             "Saldo Restante": round(saldo if saldo > 0 else 0, 2)
         })
 
+    df_amortizacion = pd.DataFrame(tabla)
+    return df_amortizacion, tasa_Mensual
+
+
+#def guardar_excel(df, nombre_archivo="Plan_Amortizacion.xlsx"):
+    ruta_actual = os.getcwd()
+    ruta_archivo = os.path.join(ruta_actual, nombre_archivo)
+    df.to_excel(ruta_archivo, index=False)
+    print(f"El plan de amortización ha sido guardado en: {ruta_archivo}")
+
+
+def main():
+    tasa_interes_anual, monto_prestamo, plazo_meses = pedir_info()
+    tasa_Mensual = (1 + tasa_interes_anual / 100) ** (1/12) - 1
+    tasa_Mensual = round(tasa_Mensual * 100, 4)
+    df_amortizacion = calcular_amortizacion(tasa_interes_anual, monto_prestamo, plazo_meses)
+    print(f"Plan de Amortización para un préstamo de {monto_prestamo} a una tasa anual de {tasa_interes_anual}% y en meses {tasa_Mensual}% a {plazo_meses} meses:\n")
+    print(df_amortizacion)
+    #guardar_excel(df_amortizacion)
 
 
 
 
-
-main()
+if __name__ == "__main__":
+    main()
