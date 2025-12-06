@@ -5,7 +5,7 @@ from io import BytesIO
 
 # Configuración de la página
 st.set_page_config(
-    page_title="Calculadora de Amortización",
+    page_title="Calculadora de Amortización Proyecto PYlatino",
     page_icon="💰",
     layout="wide"
 )
@@ -43,11 +43,11 @@ def crear_excel(df):
     return output.getvalue()
 
 # Título principal
-st.title("💰 Calculadora de Amortización de Préstamos")
+st.title("💰 Calculadora de Amortización Proyecto PYlatino")
 st.markdown("---")
 
 # Sección de entrada de datos
-st.subheader("📝 Ingresa los datos de tu préstamo")
+st.subheader("📝 Ingresa los datos de tu préstamo en caso de no saber la tasa de interes anual consulte la tasa de usura del día")
 
 col1, col2, col3 = st.columns(3)
 
